@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preguntas Frecuentes — MetaImagen</title>
+  <meta name="description" content="Resolvemos tus dudas sobre MetaImagen. Todo lo que necesitas saber para comprar y vender." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #C5A45A; --gold-light: #DCC9A3; --gold-glow: rgba(197,164,90,0.1);
+      --dark: #080808; --dark2: #111111; --dark3: #1A1A1A; --dark4: #222222; --dark5: #2A2A2A;
+      --text: #F5F3EE; --text-soft: #D4CFC8; --muted: #7A7068; --muted2: #4A4540;
+      --border: rgba(197,164,90,0.15);
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'Montserrat', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--dark); color: var(--text); font-family: var(--font-body); font-weight: 300; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999; opacity: 0.4;
+    }
+
+    /* ── BARRA DE NAVEGACIÓN ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 48px; background: rgba(8,8,8,0.92); backdrop-filter: blur(20px);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .nav-logo { font-family: var(--font-display); font-size: 20px; font-weight: 500; letter-spacing: 5px; color: var(--gold-light); text-decoration: none; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { font-size: 10px; letter-spacing: 2px; color: var(--muted); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { font-family: var(--font-body); font-size: 10px; letter-spacing: 2px; padding: 8px 20px; border: 0.5px solid var(--gold); color: var(--gold); background: transparent; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .nav-cta:hover { background: var(--gold); color: var(--dark); }
+
+    /* ── ENCABEZADO ── */
+    .page-hero {
+      padding: 140px 48px 80px; text-align: center;
+      border-bottom: 0.5px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+    .page-hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 60%, rgba(197,164,90,0.05) 0%, transparent 70%); }
+    .page-hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(197,164,90,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(197,164,90,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 0%, transparent 70%);
+    }
+    .page-label { font-size: 9px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 14px; position: relative; }
+    .page-label::before, .page-label::after { content: ''; display: block; width: 30px; height: 0.5px; background: var(--gold); }
+    .page-title { font-family: var(--font-display); font-size: clamp(36px, 6vw, 72px); font-weight: 300; color: var(--text); letter-spacing: 2px; margin-bottom: 16px; position: relative; }
+    .page-title em { font-style: italic; color: var(--gold); }
+    .page-sub { font-size: 12px; color: var(--muted); letter-spacing: 1.5px; line-height: 1.8; position: relative; max-width: 500px; margin: 0 auto; }
+
+    /* ── BUSCADOR FAQ ── */
+    .faq-search { padding: 40px 48px 0; max-width: 600px; margin: 0 auto; }
+    .search-inner { display: flex; border: 0.5px solid var(--dark5); background: var(--dark2); }
+    .search-inner input { flex: 1; background: transparent; border: none; outline: none; font-family: var(--font-body); font-size: 13px; letter-spacing: 0.5px; color: var(--text); padding: 14px 20px; font-weight: 300; }
+    .search-inner input::placeholder { color: var(--muted); }
+    .search-inner input:focus { border-color: var(--gold); }
+
+    /* ── CATEGORÍAS FAQ ── */
+    .faq-cats { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; padding: 32px 48px 0; }
+    .faq-cat { font-size: 10px; letter-spacing: 2px; padding: 8px 20px; border: 0.5px solid var(--dark5); color: var(--muted); background: var(--dark2); cursor: pointer; text-transform: uppercase; transition: all 0.2s; }
+    .faq-cat:hover { border-color: var(--muted2); color: var(--text-soft); }
+    .faq-cat.active { border-color: var(--gold); color: var(--gold); background: var(--gold-glow); }
+
+    /* ── LAYOUT FAQ ── */
+    .faq-layout { display: grid; grid-template-columns: 240px 1fr; gap: 2px; background: var(--dark4); margin: 48px 48px 80px; }
+
+    /* ── MENÚ LATERAL ── */
+    .faq-sidebar { background: var(--dark2); padding: 32px 24px; }
+    .sidebar-title { font-size: 9px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; }
+    .sidebar-link { display: block; font-size: 11px; letter-spacing: 1px; color: var(--muted); padding: 10px 0; border-bottom: 0.5px solid var(--dark5); cursor: pointer; transition: color 0.2s; text-decoration: none; }
+    .sidebar-link:hover { color: var(--gold-light); }
+    .sidebar-link.active { color: var(--gold); }
+
+    /* ── PREGUNTAS ── */
+    .faq-content { background: var(--dark2); padding: 32px 40px; }
+
+    .faq-section { margin-bottom: 48px; }
+    .faq-section-title { font-family: var(--font-display); font-size: 24px; font-weight: 400; color: var(--text); letter-spacing: 0.5px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 0.5px solid var(--border); display: flex; align-items: center; gap: 12px; }
+    .faq-section-icon { font-size: 20px; }
+
+    .faq-item { border-bottom: 0.5px solid var(--dark5); overflow: hidden; }
+    .faq-question { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; cursor: pointer; transition: color 0.2s; gap: 16px; }
+    .faq-question:hover { color: var(--gold-light); }
+    .faq-question-text { font-size: 13px; color: var(--text-soft); letter-spacing: 0.5px; line-height: 1.5; font-weight: 400; }
+    .faq-question:hover .faq-question-text { color: var(--gold-light); }
+    .faq-icon { font-size: 16px; color: var(--gold); flex-shrink: 0; transition: transform 0.3s; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
+    .faq-answer-inner { padding: 0 0 20px; font-size: 12px; color: var(--muted); line-height: 1.9; letter-spacing: 0.5px; }
+    .faq-item.open .faq-answer { max-height: 300px; }
+    .faq-answer-inner a { color: var(--gold); text-decoration: none; }
+    .faq-answer-inner strong { color: var(--text-soft); font-weight: 500; }
+
+    /* ── BANNER CONTACTO ── */
+    .contact-banner { margin: 0 48px 80px; background: var(--dark3); border: 0.5px solid var(--border); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .contact-banner-text {}
+    .contact-banner-label { font-size: 9px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+    .contact-banner-title { font-family: var(--font-display); font-size: 28px; font-weight: 300; color: var(--text); margin-bottom: 8px; }
+    .contact-banner-sub { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+    .btn-contacto { font-family: var(--font-body); font-size: 10px; letter-spacing: 2px; padding: 12px 28px; background: var(--gold); color: var(--dark); border: none; cursor: pointer; font-weight: 500; text-transform: uppercase; transition: all 0.2s; text-decoration: none; white-space: nowrap; }
+    .btn-contacto:hover { background: var(--gold-light); }
+
+    /* ── PIE DE PÁGINA ── */
+    footer { border-top: 0.5px solid var(--border); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; }
+    .footer-logo { font-family: var(--font-display); font-size: 18px; letter-spacing: 5px; color: var(--gold-light); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 9px; letter-spacing: 2px; color: var(--muted2); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 9px; letter-spacing: 2px; color: var(--muted2); }
+
+    /* ── DISEÑO ADAPTABLE ── */
+    @media (max-width: 900px) {
+      .nav { padding: 14px 24px; }
+      .nav-links { display: none; }
+      .page-hero { padding: 110px 24px 60px; }
+      .faq-search, .faq-cats { padding-left: 24px; padding-right: 24px; }
+      .faq-layout { grid-template-columns: 1fr; margin: 40px 24px 60px; }
+      .faq-sidebar { display: none; }
+      .faq-content { padding: 24px; }
+      .contact-banner { margin: 0 24px 60px; flex-direction: column; text-align: center; padding: 32px 24px; }
+      footer { padding: 32px 24px; flex-direction: column; text-align: center; gap: 16px; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DE NAVEGACIÓN -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">METAIMAGEN</a>
+    <div class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="index.html#productos">Explorar</a>
+      <a href="precios.html">Planes</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+    <a href="publicar.html" class="nav-cta">Publicar</a>
+  </nav>
+
+  <!-- ENCABEZADO -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-grid"></div>
+    <div class="page-label">Centro de ayuda</div>
+    <h1 class="page-title">Preguntas<br><em>frecuentes</em></h1>
+    <p class="page-sub">Resolvemos tus dudas sobre cómo comprar, vender y sacar el máximo provecho de MetaImagen</p>
+  </section>
+
+  <!-- BUSCADOR -->
+  <div class="faq-search">
+    <div class="search-inner">
+      <input type="text" id="faqSearch" placeholder="Busca tu pregunta aquí..." oninput="filtrarFAQ()" />
+    </div>
+  </div>
+
+  <!-- CATEGORÍAS -->
+  <div class="faq-cats">
+    <div class="faq-cat active" onclick="filtrarCategoria('todo', this)">Todo</div>
+    <div class="faq-cat" onclick="filtrarCategoria('compradores', this)">Compradores</div>
+    <div class="faq-cat" onclick="filtrarCategoria('vendedores', this)">Vendedores</div>
+    <div class="faq-cat" onclick="filtrarCategoria('verificacion', this)">Verificación</div>
+    <div class="faq-cat" onclick="filtrarCategoria('pagos', this)">Pagos</div>
+    <div class="faq-cat" onclick="filtrarCategoria('cuenta', this)">Mi cuenta</div>
+  </div>
+
+  <!-- LAYOUT PRINCIPAL -->
+  <div class="faq-layout">
+
+    <!-- MENÚ LATERAL -->
+    <div class="faq-sidebar">
+      <div class="sidebar-title">Categorías</div>
+      <a class="sidebar-link active" onclick="filtrarCategoria('todo', this)">Todas las preguntas</a>
+      <a class="sidebar-link" onclick="filtrarCategoria('compradores', this)">🛍️ Compradores</a>
+      <a class="sidebar-link" onclick="filtrarCategoria('vendedores', this)">🏷️ Vendedores</a>
+      <a class="sidebar-link" onclick="filtrarCategoria('verificacion', this)">💎 Verificación premium</a>
+      <a class="sidebar-link" onclick="filtrarCategoria('pagos', this)">💳 Pagos y comisiones</a>
+      <a class="sidebar-link" onclick="filtrarCategoria('cuenta', this)">👤 Mi cuenta</a>
+    </div>
+
+    <!-- PREGUNTAS -->
+    <div class="faq-content" id="faqContent">
+
+      <!-- COMPRADORES -->
+      <div class="faq-section" data-cat="compradores">
+        <div class="faq-section-title"><span class="faq-section-icon">🛍️</span> Para compradores</div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span class="faq-question-text">¿Cómo sé si un artículo es auténtico?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Los artículos con el badge <strong>💎 Verificado</strong> han pasado por nuestro proceso de autenticación. El vendedor presentó factura, caja original u otros documentos que confirman la autenticidad del producto. Si tienes dudas sobre un artículo específico, escríbenos a <a href="mailto:verificacion@metaimagen.com">verificacion@metaimagen.com</a> antes de comprar.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span class="faq-question-text">¿Cómo me contacto con un vendedor?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">En la página de cada producto encontrarás el botón <strong>"Contactar vendedor"</strong> que te conecta directamente por WhatsApp. El vendedor recibirá tu mensaje con la información del artículo que te interesa. Te recomendamos preguntar sobre el estado, método de entrega y disponibilidad antes de cerrar la compra.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span class="faq-question-text">¿Puedo devolver un artículo si no es lo que esperaba?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Las devoluciones dependen del acuerdo entre comprador y vendedor, ya que MetaImagen es una plataforma de conexión. Te recomendamos acordar la política de devolución con el vendedor antes de pagar. Para artículos verificados que no correspondan a la descripción, contáctanos inmediatamente y gestionamos el caso.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span class="faq-question-text">¿Cómo puedo guardar artículos que me interesan?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">En la página de cada producto verás el botón <strong>♡ Guardar artículo</strong>. Al hacer clic se agrega a tu lista de favoritos. Puedes acceder a ella desde tu perfil en cualquier momento. Necesitas una cuenta activa en MetaImagen para usar esta función.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span class="faq-question-text">¿Cómo calfico a un vendedor después de comprar?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Después de concretar tu compra recibirás una notificación para calificar tu experiencia con el vendedor. Tu reseña ayuda a otros compradores a tomar mejores decisiones. Las calificaciones son anónimas y verificadas — solo compradores reales pueden dejar reseñas.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VENDEDORES -->
+      <div class="faq-section" data-cat="vendedores">
+        <div class="faq-section-title"><span class="faq-section-icon">🏷️</span> Para vendedores</div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span class="faq-question-text">¿Cuánto cuesta publicar en MetaImagen?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Publicar es completamente <strong>gratuito</strong>. Solo se aplica una comisión cuando concluyes una venta exitosa. Así puedes listar todos tus productos sin riesgo. Consulta nuestra <a href="precios.html">página de planes</a> para conocer las comisiones y beneficios de cada nivel.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span class="faq-question-text">¿Cuántos artículos puedo publicar?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Con el plan gratuito puedes publicar hasta <strong>10 artículos</strong> activos al mismo tiempo. Si necesitas publicar más, nuestros planes de vendedor te permiten tener artículos ilimitados además de beneficios adicionales como artículos destacados y estadísticas de visitas.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span class="faq-question-text">¿Qué tipos de artículos puedo vender?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Puedes vender ropa de mujer y hombre, zapatos, cosméticos, perfumes, accesorios, carteras, joyería y relojes. Los artículos deben estar en buen estado y ser descritos con honestidad. No se permiten falsificaciones, artículos prohibidos ni productos que no correspondan a las categorías de moda y belleza.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span class="faq-question-text">¿Cómo puedo destacar mis artículos?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Los artículos verificados premium aparecen primero en los resultados de búsqueda. También puedes obtener el badge de vendedor verificado completando tu perfil al 100%, acumulando reseñas positivas y manteniendo un tiempo de respuesta rápido. Los planes de pago incluyen publicaciones destacadas automáticas.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span class="faq-question-text">¿Puedo vender como negocio o marca?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Sí. MetaImagen tiene tres tipos de vendedor: <strong>Individual</strong> para personas naturales, <strong>Negocio</strong> para emprendimientos y tiendas locales, y <strong>Premium</strong> para vendedores de artículos de marca verificados. Cada tipo tiene su propio perfil, badge y beneficios.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VERIFICACIÓN -->
+      <div class="faq-section" data-cat="verificacion">
+        <div class="faq-section-title"><span class="faq-section-icon">💎</span> Verificación premium</div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span class="faq-question-text">¿Qué es el badge de artículo verificado?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">El badge <strong>💎 Verificado</strong> indica que el artículo pasó por nuestro proceso de autenticación. El vendedor presentó evidencia suficiente — factura, caja original, etiquetas o certificado — y nuestro equipo confirmó la autenticidad. Es la señal más fuerte de confianza en MetaImagen.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span class="faq-question-text">¿Cómo solicito la verificación de mi artículo?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Al publicar tu artículo encontrarás la sección <strong>"¿Artículo de marca original?"</strong>. Activa la opción de verificación y sube las fotos de la factura, caja o etiquetas originales. Nuestro equipo revisará la solicitud en un plazo de 24 a 48 horas hábiles y te notificará por correo o WhatsApp.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span class="faq-question-text">¿Qué marcas pueden verificarse?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Verificamos artículos de marcas reconocidas como Coach, Michael Kors, Louis Vuitton, Gucci, Nike, Adidas, Ray-Ban, Pandora, Swarovski, MAC, Chanel, entre muchas otras. Si tienes dudas sobre si tu marca aplica, escríbenos a <a href="mailto:verificacion@metaimagen.com">verificacion@metaimagen.com</a>.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span class="faq-question-text">¿Tiene costo la verificación?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">La verificación es <strong>gratuita</strong> para todos los vendedores. Es parte de nuestro compromiso con la confianza en la plataforma. En el futuro podríamos ofrecer verificación express con respuesta en menos de 4 horas como beneficio de planes premium.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAGOS -->
+      <div class="faq-section" data-cat="pagos">
+        <div class="faq-section-title"><span class="faq-section-icon">💳</span> Pagos y comisiones</div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span class="faq-question-text">¿Cómo funciona el sistema de pagos?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Actualmente el pago se acuerda directamente entre comprador y vendedor — por transferencia bancaria, efectivo o cualquier método que ambos prefieran. MetaImagen está trabajando en integrar un sistema de pago seguro dentro de la plataforma próximamente.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span class="faq-question-text">¿Cuál es la comisión de MetaImagen?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">MetaImagen aplica una comisión del <strong>5% sobre el valor de cada venta concretada</strong>. Esta comisión cubre el mantenimiento de la plataforma, el sistema de verificación y el soporte al cliente. La publicación siempre es gratuita — solo pagas cuando vendes.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span class="faq-question-text">¿Hay costos mensuales o de suscripción?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">El plan básico es completamente gratuito — sin mensualidad, sin costo de registro. Los planes de pago son opcionales y ofrecen beneficios adicionales como artículos destacados, estadísticas avanzadas y soporte prioritario. Consulta nuestra <a href="precios.html">página de planes</a> para más detalles.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CUENTA -->
+      <div class="faq-section" data-cat="cuenta">
+        <div class="faq-section-title"><span class="faq-section-icon">👤</span> Mi cuenta</div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span class="faq-question-text">¿Cómo creo una cuenta en MetaImagen?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Ve a <a href="registro.html">metaimagen.com/registro</a> y crea tu cuenta con tu correo electrónico o directamente con Google o Facebook. El proceso toma menos de 2 minutos. Una vez registrado puedes empezar a explorar, guardar artículos y publicar los tuyos.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span class="faq-question-text">¿Cómo recupero mi contraseña?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">En la página de inicio de sesión haz clic en <strong>"¿Olvidaste tu contraseña?"</strong>. Ingresa tu correo electrónico y recibirás un enlace para crear una nueva contraseña. Si no recibes el correo en 5 minutos revisa tu carpeta de spam o escríbenos a <a href="mailto:hola@metaimagen.com">hola@metaimagen.com</a>.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span class="faq-question-text">¿Cómo elimino mi cuenta?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Si deseas eliminar tu cuenta escríbenos a <a href="mailto:hola@metaimagen.com">hola@metaimagen.com</a> con el asunto "Eliminar cuenta" desde el correo registrado. Procesamos la solicitud en un plazo de 5 días hábiles. Ten en cuenta que esta acción es irreversible y eliminará todas tus publicaciones y reseñas.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span class="faq-question-text">¿Cómo reporto un artículo o vendedor sospechoso?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">En la página de cada producto o perfil de vendedor encontrarás la opción <strong>"Reportar"</strong>. También puedes escribirnos directamente a <a href="mailto:hola@metaimagen.com">hola@metaimagen.com</a> con el nombre del producto o vendedor y el motivo del reporte. Investigamos todos los casos en menos de 24 horas.</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BANNER CONTACTO -->
+  <div class="contact-banner">
+    <div class="contact-banner-text">
+      <div class="contact-banner-label">¿No encontraste tu respuesta?</div>
+      <h2 class="contact-banner-title">Estamos aquí para ayudarte</h2>
+      <p class="contact-banner-sub">Escríbenos por WhatsApp o correo — respondemos en menos de 24 horas</p>
+    </div>
+    <a href="contacto.html" class="btn-contacto">Contactar soporte →</a>
+  </div>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <div class="footer-logo">METAIMAGEN</div>
+    <div class="footer-links">
+      <a href="index.html">Inicio</a>
+      <a href="precios.html">Planes</a>
+      <a href="contacto.html">Contacto</a>
+      <a href="terminos.html">Términos</a>
+    </div>
+    <div class="footer-copy">© 2026 MetaImagen</div>
+  </footer>
+
+  <script>
+    /* ── ABRIR Y CERRAR PREGUNTAS ── */
+    function toggleFAQ(el) {
+      const item = el.parentElement;
+      const estaAbierto = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!estaAbierto) item.classList.add('open');
+    }
+
+    /* ── FILTRAR POR CATEGORÍA ── */
+    function filtrarCategoria(cat, el) {
+      document.querySelectorAll('.faq-cat, .sidebar-link').forEach(b => b.classList.remove('active'));
+      if (el) el.classList.add('active');
+      document.querySelectorAll('.faq-section').forEach(sec => {
+        if (cat === 'todo' || sec.dataset.cat === cat) {
+          sec.style.display = 'block';
+        } else {
+          sec.style.display = 'none';
+        }
+      });
+    }
+
+    /* ── BUSCAR PREGUNTAS ── */
+    function filtrarFAQ() {
+      const q = document.getElementById('faqSearch').value.toLowerCase();
+      document.querySelectorAll('.faq-item').forEach(item => {
+        const texto = item.querySelector('.faq-question-text').textContent.toLowerCase();
+        const respuesta = item.querySelector('.faq-answer-inner').textContent.toLowerCase();
+        item.style.display = (texto.includes(q) || respuesta.includes(q)) ? 'block' : 'none';
+      });
+      document.querySelectorAll('.faq-section').forEach(sec => {
+        const visibles = [...sec.querySelectorAll('.faq-item')].filter(i => i.style.display !== 'none');
+        sec.style.display = visibles.length > 0 ? 'block' : 'none';
+      });
+    }
+
+    /* ── ANIMACIÓN AL HACER SCROLL ── */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+      });
+    }, { threshold: 0.05 });
+
+    document.querySelectorAll('.faq-item').forEach(el => {
+      el.style.opacity = '0'; el.style.transform = 'translateY(10px)';
+      el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto — MetaImagen</title>
+  <meta name="description" content="Contáctanos en MetaImagen. Estamos aquí para ayudarte." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #C5A45A; --gold-light: #DCC9A3; --gold-glow: rgba(197,164,90,0.1);
+      --dark: #080808; --dark2: #111111; --dark3: #1A1A1A; --dark4: #222222; --dark5: #2A2A2A;
+      --text: #F5F3EE; --text-soft: #D4CFC8; --muted: #7A7068; --muted2: #4A4540;
+      --border: rgba(197,164,90,0.15);
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'Montserrat', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--dark); color: var(--text); font-family: var(--font-body); font-weight: 300; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999; opacity: 0.4;
+    }
+
+    /* ── BARRA DE NAVEGACIÓN ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 48px; background: rgba(8,8,8,0.92); backdrop-filter: blur(20px);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .nav-logo { font-family: var(--font-display); font-size: 20px; font-weight: 500; letter-spacing: 5px; color: var(--gold-light); text-decoration: none; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { font-size: 10px; letter-spacing: 2px; color: var(--muted); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { font-family: var(--font-body); font-size: 10px; letter-spacing: 2px; padding: 8px 20px; border: 0.5px solid var(--gold); color: var(--gold); background: transparent; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .nav-cta:hover { background: var(--gold); color: var(--dark); }
+
+    /* ── ENCABEZADO ── */
+    .page-hero {
+      padding: 140px 48px 80px; text-align: center;
+      border-bottom: 0.5px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 60%, rgba(197,164,90,0.05) 0%, transparent 70%);
+    }
+    .page-hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(197,164,90,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(197,164,90,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 0%, transparent 70%);
+    }
+    .page-label { font-size: 9px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 14px; position: relative; }
+    .page-label::before, .page-label::after { content: ''; display: block; width: 30px; height: 0.5px; background: var(--gold); }
+    .page-title { font-family: var(--font-display); font-size: clamp(36px, 6vw, 72px); font-weight: 300; color: var(--text); letter-spacing: 2px; margin-bottom: 16px; position: relative; }
+    .page-title em { font-style: italic; color: var(--gold); }
+    .page-sub { font-size: 12px; color: var(--muted); letter-spacing: 1.5px; line-height: 1.8; position: relative; }
+
+    /* ── CANALES DE CONTACTO ── */
+    .canales {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2px; background: var(--dark4);
+      margin: 0; border-bottom: 0.5px solid var(--border);
+    }
+    .canal {
+      background: var(--dark2); padding: 40px 28px; text-align: center;
+      cursor: pointer; transition: background 0.2s; text-decoration: none;
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
+      position: relative; overflow: hidden;
+    }
+    .canal::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s;
+    }
+    .canal:hover { background: var(--dark3); }
+    .canal:hover::before { transform: scaleX(1); }
+    .canal-icon { font-size: 32px; }
+    .canal-name { font-size: 11px; letter-spacing: 2px; color: var(--text-soft); text-transform: uppercase; }
+    .canal-desc { font-size: 10px; color: var(--muted); letter-spacing: 0.5px; line-height: 1.6; }
+    .canal-eslogan { font-size: 10px; color: var(--gold); letter-spacing: 0.5px; font-style: italic; margin-top: -4px; }
+    .canal-action { font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-top: 4px; }
+
+    /* ── LAYOUT PRINCIPAL ── */
+    .main-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px; background: var(--dark4);
+      margin: 60px 48px 80px;
+    }
+
+    /* ── FORMULARIO ── */
+    .form-side { background: var(--dark2); padding: 48px 40px; }
+    .section-label { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+    .section-label-text { font-size: 9px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; }
+    .section-label-line { flex: 1; height: 0.5px; background: var(--border); }
+
+    .field { margin-bottom: 18px; }
+    .field label { display: block; font-size: 9px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
+    .field input, .field select, .field textarea {
+      width: 100%; background: var(--dark3); border: 0.5px solid var(--dark5);
+      color: var(--text); font-family: var(--font-body); font-size: 13px; font-weight: 300;
+      padding: 12px 16px; outline: none; transition: border-color 0.2s;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); }
+    .field input::placeholder, .field textarea::placeholder { color: var(--muted2); font-size: 12px; }
+    .field select option { background: var(--dark3); }
+    .field textarea { resize: none; height: 120px; line-height: 1.7; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .btn-enviar { width: 100%; padding: 15px; background: var(--gold); color: var(--dark); border: none; font-family: var(--font-body); font-size: 11px; letter-spacing: 3px; font-weight: 500; cursor: pointer; text-transform: uppercase; transition: all 0.25s; margin-top: 8px; }
+    .btn-enviar:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    .form-nota { font-size: 10px; color: var(--muted2); letter-spacing: 0.5px; line-height: 1.8; margin-top: 14px; text-align: center; }
+
+    /* ── INFORMACIÓN ── */
+    .info-side { background: var(--dark2); padding: 48px 40px; display: flex; flex-direction: column; gap: 32px; }
+
+    .info-block {}
+    .info-title { font-family: var(--font-display); font-size: 24px; font-weight: 400; color: var(--text); letter-spacing: 0.5px; margin-bottom: 14px; }
+    .info-text { font-size: 12px; color: var(--muted); line-height: 1.9; letter-spacing: 0.5px; }
+
+    .horarios { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
+    .horario-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 0.5px solid var(--dark5); font-size: 11px; }
+    .horario-dia { color: var(--text-soft); letter-spacing: 1px; }
+    .horario-hora { color: var(--gold); letter-spacing: 1px; }
+
+    .redes { display: flex; gap: 10px; margin-top: 6px; }
+    .red-btn {
+      padding: 10px 18px; background: var(--dark3); border: 0.5px solid var(--dark5);
+      color: var(--muted); font-size: 10px; letter-spacing: 1px; cursor: pointer;
+      transition: all 0.2s; text-decoration: none; display: inline-block; text-transform: uppercase;
+    }
+    .red-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+    .tiempo-respuesta {
+      background: var(--dark3); border: 0.5px solid var(--border);
+      padding: 20px 22px; display: flex; align-items: center; gap: 16px;
+    }
+    .tr-icon { font-size: 24px; color: var(--gold); flex-shrink: 0; }
+    .tr-title { font-size: 11px; letter-spacing: 1px; color: var(--text-soft); margin-bottom: 4px; }
+    .tr-desc { font-size: 10px; color: var(--muted); letter-spacing: 0.5px; line-height: 1.6; }
+
+    /* ── MAPA / UBICACIÓN ── */
+    .ubicacion {
+      margin: 0 48px 80px;
+      background: var(--dark3); border: 0.5px solid var(--border);
+      padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 32px;
+    }
+    .ubicacion-text {}
+    .ubicacion-label { font-size: 9px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
+    .ubicacion-title { font-family: var(--font-display); font-size: 28px; font-weight: 300; color: var(--text); margin-bottom: 10px; }
+    .ubicacion-desc { font-size: 12px; color: var(--muted); line-height: 1.8; letter-spacing: 0.5px; }
+    .ubicacion-badge {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 10px; color: var(--gold-light); letter-spacing: 1px; margin-top: 16px;
+    }
+
+    /* ── PIE DE PÁGINA ── */
+    footer { border-top: 0.5px solid var(--border); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; }
+    .footer-logo { font-family: var(--font-display); font-size: 18px; letter-spacing: 5px; color: var(--gold-light); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 9px; letter-spacing: 2px; color: var(--muted2); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 9px; letter-spacing: 2px; color: var(--muted2); }
+
+    /* ── MENSAJE DE ÉXITO ── */
+    .success-msg {
+      display: none; background: var(--dark3); border: 0.5px solid var(--gold);
+      padding: 20px 24px; text-align: center; margin-top: 16px;
+    }
+    .success-msg.show { display: block; }
+    .success-icon { font-size: 28px; margin-bottom: 8px; }
+    .success-title { font-family: var(--font-display); font-size: 20px; color: var(--gold-light); margin-bottom: 6px; }
+    .success-text { font-size: 11px; color: var(--muted); letter-spacing: 0.5px; }
+
+    /* ── DISEÑO ADAPTABLE ── */
+    @media (max-width: 900px) {
+      .nav { padding: 14px 24px; }
+      .nav-links { display: none; }
+      .page-hero { padding: 110px 24px 60px; }
+      .main-layout { grid-template-columns: 1fr; margin: 40px 24px 60px; }
+      .form-side, .info-side { padding: 32px 24px; }
+      .ubicacion { margin: 0 24px 60px; flex-direction: column; text-align: center; }
+      footer { padding: 32px 24px; flex-direction: column; text-align: center; gap: 16px; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DE NAVEGACIÓN -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">METAIMAGEN</a>
+    <div class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="index.html#productos">Explorar</a>
+      <a href="precios.html">Planes</a>
+      <a href="faq.html">Ayuda</a>
+    </div>
+    <a href="publicar.html" class="nav-cta">Publicar</a>
+  </nav>
+
+  <!-- ENCABEZADO -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-grid"></div>
+    <div class="page-label">Soporte</div>
+    <h1 class="page-title">Estamos aquí<br><em>para ayudarte</em></h1>
+    <p class="page-sub">Escríbenos por el canal que prefieras — respondemos rápido</p>
+  </section>
+
+  <!-- CANALES DE CONTACTO -->
+  <div class="canales">
+
+    <!-- WHATSAPP -->
+    <a href="https://wa.me/593XXXXXXXXX" target="_blank" class="canal">
+      <div class="canal-icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="24" fill="#25D366"/>
+          <path d="M34.5 13.5C32.1 11.1 28.9 9.8 25.5 9.8C18.5 9.8 12.8 15.5 12.8 22.5C12.8 24.8 13.4 27 14.5 29L12.5 36L19.7 34C21.6 35 23.5 35.5 25.5 35.5C32.5 35.5 38.2 29.8 38.2 22.8C38.2 19.4 36.9 16.1 34.5 13.5ZM25.5 33.2C23.7 33.2 22 32.7 20.5 31.8L20.1 31.5L15.8 32.7L17 28.5L16.7 28.1C15.7 26.5 15.1 24.6 15.1 22.5C15.1 16.8 19.8 12.1 25.5 12.1C28.3 12.1 30.9 13.2 32.8 15.2C34.8 17.1 35.9 19.7 35.9 22.5C35.9 28.3 31.3 33.2 25.5 33.2ZM31.3 25.3C31 25.2 29.5 24.4 29.2 24.3C28.9 24.2 28.7 24.2 28.5 24.5C28.3 24.8 27.7 25.5 27.5 25.7C27.3 25.9 27.2 26 26.9 25.8C26.6 25.7 25.6 25.4 24.4 24.3C23.5 23.5 22.9 22.5 22.7 22.2C22.5 21.9 22.7 21.8 22.8 21.6C23 21.4 23.2 21.2 23.3 21C23.4 20.8 23.5 20.7 23.6 20.5C23.7 20.3 23.6 20.1 23.6 20C23.5 19.9 22.9 18.4 22.7 17.8C22.4 17.2 22.2 17.3 22 17.3H21.4C21.2 17.3 20.8 17.4 20.5 17.7C20.2 18 19.4 18.8 19.4 20.3C19.4 21.8 20.5 23.2 20.7 23.4C20.9 23.6 22.9 26.7 25.9 28C26.6 28.3 27.2 28.5 27.6 28.6C28.3 28.8 29 28.8 29.5 28.7C30.1 28.6 31.3 27.9 31.6 27.1C31.9 26.3 31.9 25.7 31.8 25.6C31.7 25.4 31.5 25.4 31.3 25.3Z" fill="white"/>
+        </svg>
+      </div>
+      <div class="canal-name">WhatsApp</div>
+      <div class="canal-eslogan">"Simple. Reliable. Private."</div>
+      <div class="canal-desc">La forma más rápida de contactarnos. Respondemos en minutos.</div>
+      <div class="canal-action">Escribir ahora →</div>
+    </a>
+
+    <!-- CORREO -->
+    <a href="mailto:hola@metaimagen.com" class="canal">
+      <div class="canal-icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="24" fill="#EA4335"/>
+          <path d="M36 16H12C10.9 16 10 16.9 10 18V30C10 31.1 10.9 32 12 32H36C37.1 32 38 31.1 38 30V18C38 16.9 37.1 16 36 16ZM36 20L24 26L12 20V18L24 24L36 18V20Z" fill="white"/>
+        </svg>
+      </div>
+      <div class="canal-name">Correo electrónico</div>
+      <div class="canal-eslogan">"Email works. Make it count."</div>
+      <div class="canal-desc">Para consultas detalladas o documentos. Respondemos en 24 horas.</div>
+      <div class="canal-action">Enviar correo →</div>
+    </a>
+
+    <!-- INSTAGRAM -->
+    <a href="https://instagram.com/metaimagen" target="_blank" class="canal">
+      <div class="canal-icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="ig-grad" cx="30%" cy="107%" r="150%">
+              <stop offset="0%" stop-color="#fdf497"/>
+              <stop offset="5%" stop-color="#fdf497"/>
+              <stop offset="45%" stop-color="#fd5949"/>
+              <stop offset="60%" stop-color="#d6249f"/>
+              <stop offset="90%" stop-color="#285AEB"/>
+            </radialGradient>
+          </defs>
+          <circle cx="24" cy="24" r="24" fill="url(#ig-grad)"/>
+          <rect x="14" y="14" width="20" height="20" rx="6" stroke="white" stroke-width="2" fill="none"/>
+          <circle cx="24" cy="24" r="5" stroke="white" stroke-width="2" fill="none"/>
+          <circle cx="30.5" cy="17.5" r="1.5" fill="white"/>
+        </svg>
+      </div>
+      <div class="canal-name">Instagram</div>
+      <div class="canal-eslogan">"Capture and Share the World's Moments."</div>
+      <div class="canal-desc">Síguenos y escríbenos por DM. Novedades y atención al cliente.</div>
+      <div class="canal-action">Ir a Instagram →</div>
+    </a>
+
+    <!-- FACEBOOK -->
+    <a href="https://facebook.com/metaimagen" target="_blank" class="canal">
+      <div class="canal-icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="24" fill="#1877F2"/>
+          <path d="M31 24H27V38H21V24H18V18H21V15C21 12.3 22.7 10 26 10H31V16H28C27.4 16 27 16.4 27 17V18H31L31 24Z" fill="white"/>
+        </svg>
+      </div>
+      <div class="canal-name">Facebook</div>
+      <div class="canal-eslogan">"Connect with friends and the world around you."</div>
+      <div class="canal-desc">Comunidad MetaImagen. Preguntas, reseñas y novedades.</div>
+      <div class="canal-action">Ir a Facebook →</div>
+    </a>
+
+  </div>
+
+  <!-- FORMULARIO + INFORMACIÓN -->
+  <div class="main-layout">
+
+    <!-- FORMULARIO -->
+    <div class="form-side">
+      <div class="section-label">
+        <span class="section-label-text">Envíanos un mensaje</span>
+        <div class="section-label-line"></div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Nombre</label>
+          <input type="text" id="nombre" placeholder="Tu nombre" />
+        </div>
+        <div class="field">
+          <label>Apellido</label>
+          <input type="text" placeholder="Tu apellido" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Correo electrónico</label>
+        <input type="email" id="email" placeholder="tucorreo@email.com" />
+      </div>
+
+      <div class="field">
+        <label>Teléfono (opcional)</label>
+        <input type="tel" placeholder="+593 ..." />
+      </div>
+
+      <div class="field">
+        <label>Motivo de contacto</label>
+        <select>
+          <option value="">Selecciona un motivo</option>
+          <optgroup label="COMPRADORES">
+            <option>Tengo una duda sobre un artículo</option>
+            <option>Problema con una compra</option>
+            <option>Quiero reportar un vendedor</option>
+          </optgroup>
+          <optgroup label="VENDEDORES">
+            <option>Quiero publicar en MetaImagen</option>
+            <option>Solicitar verificación premium</option>
+            <option>Problema con mi cuenta de vendedor</option>
+          </optgroup>
+          <optgroup label="GENERAL">
+            <option>Sugerencia o mejora</option>
+            <option>Prensa / medios</option>
+            <option>Otro</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Mensaje</label>
+        <textarea id="mensaje" placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
+      </div>
+
+      <button class="btn-enviar" onclick="enviarMensaje()">✉ Enviar mensaje</button>
+
+      <div class="success-msg" id="successMsg">
+        <div class="success-icon">✅</div>
+        <div class="success-title">¡Mensaje enviado!</div>
+        <div class="success-text">Te respondemos en menos de 24 horas. Gracias por contactar a MetaImagen.</div>
+      </div>
+
+      <p class="form-nota">Tu información es confidencial y no será compartida con terceros.</p>
+    </div>
+
+    <!-- INFORMACIÓN -->
+    <div class="info-side">
+
+      <div class="tiempo-respuesta">
+        <div class="tr-icon">⚡</div>
+        <div>
+          <div class="tr-title">Tiempo de respuesta</div>
+          <div class="tr-desc">WhatsApp: menos de 1 hora · Correo: menos de 24 horas · Redes sociales: mismo día</div>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="section-label">
+          <span class="section-label-text">Horarios de atención</span>
+          <div class="section-label-line"></div>
+        </div>
+        <div class="horarios">
+          <div class="horario-row">
+            <span class="horario-dia">Lunes a Viernes</span>
+            <span class="horario-hora">9:00 — 18:00</span>
+          </div>
+          <div class="horario-row">
+            <span class="horario-dia">Sábados</span>
+            <span class="horario-hora">9:00 — 14:00</span>
+          </div>
+          <div class="horario-row">
+            <span class="horario-dia">Domingos</span>
+            <span class="horario-hora">Cerrado</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="section-label">
+          <span class="section-label-text">Correos directos</span>
+          <div class="section-label-line"></div>
+        </div>
+        <div class="horarios">
+          <div class="horario-row">
+            <span class="horario-dia">Soporte general</span>
+            <span class="horario-hora" style="color:var(--gold-light);">hola@metaimagen.com</span>
+          </div>
+          <div class="horario-row">
+            <span class="horario-dia">Vendedores</span>
+            <span class="horario-hora" style="color:var(--gold-light);">vendedores@metaimagen.com</span>
+          </div>
+          <div class="horario-row">
+            <span class="horario-dia">Verificaciones</span>
+            <span class="horario-hora" style="color:var(--gold-light);">verificacion@metaimagen.com</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="section-label">
+          <span class="section-label-text">Síguenos</span>
+          <div class="section-label-line"></div>
+        </div>
+        <div class="redes">
+          <a href="#" class="red-btn">📸 Instagram</a>
+          <a href="#" class="red-btn">📘 Facebook</a>
+          <a href="#" class="red-btn">🎵 TikTok</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <div class="footer-logo">METAIMAGEN</div>
+    <div class="footer-links">
+      <a href="index.html">Inicio</a>
+      <a href="faq.html">FAQ</a>
+      <a href="precios.html">Planes</a>
+      <a href="terminos.html">Términos</a>
+    </div>
+    <div class="footer-copy">© 2026 MetaImagen</div>
+  </footer>
+
+  <script>
+    /* ── ENVÍO DE FORMULARIO ── */
+    function enviarMensaje() {
+      const nombre = document.getElementById('nombre').value;
+      const email = document.getElementById('email').value;
+      const mensaje = document.getElementById('mensaje').value;
+      if (!nombre || !email || !mensaje) {
+        alert('Por favor completa tu nombre, correo y mensaje.');
+        return;
+      }
+      document.getElementById('successMsg').classList.add('show');
+      document.querySelector('.btn-enviar').style.display = 'none';
+    }
+
+    /* ── ANIMACIÓN AL HACER SCROLL ── */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.canal, .info-block, .tiempo-respuesta').forEach(el => {
+      el.style.opacity = '0'; el.style.transform = 'translateY(16px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
